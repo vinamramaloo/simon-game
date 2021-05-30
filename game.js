@@ -12,6 +12,7 @@ $("h1").click(function() {
       nextSequence();
     },800);
     started = true;
+    pointerSelect();
   };
 });
 
@@ -26,6 +27,7 @@ function nextSequence() {
 
   $("#"+randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
   playSound(randomChosenColour);
+  pointerSelect();
 };
 
 
@@ -39,6 +41,7 @@ function checkAnswer(currentLevel) {
         nextSequence();
       },1000);
     };
+    pointerSelect();
   } else {
 //     // If answer is wrong
     $("#level-title").text("Game Over at Level "+ level +", Press Here To Restart");
@@ -82,13 +85,34 @@ function startOver() {
   gamePattern = [];
   userClickedPattern = [];
   level = 0;
+  pointerSelect();
 };
 
 // If user misses which colour is next
 $("#remind").click( function() {
-  console.log(userClickedPattern.length)
   if (userClickedPattern.length === 0) {
     $("#"+gamePattern[level-1]).fadeIn(100).fadeOut(100).fadeIn(100);
     playSound(gamePattern[level-1]);
   };
 });
+
+function pointerSelect() {
+  if (started) {
+    $("h1").removeClass("cursor-pointer");
+    $("h1").addClass("cursor-default");
+    $(".btn").addClass("cursor-pointer");
+    if (userClickedPattern.length === 0) {
+      $("#remind").addClass("cursor-pointer");
+      $("#remind").removeClass("cursor-default");
+    } else {
+      $("#remind").removeClass("cursor-pointer");
+      $("#remind").addClass("cursor-default");
+    }
+  } else {
+    $(".btn").removeClass("cursor-pointer");
+    $("h1").addClass("cursor-pointer");
+    $("h1").removeClass("cursor-default");
+    $("#remind").removeClass("cursor-pointer");
+    $("#remind").addClass("cursor-default");
+  };
+};
