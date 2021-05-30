@@ -1,6 +1,8 @@
 body {
   text-align: center;
   background-color: #011F3F;
+  width = 99%;
+  height: 99%;
 }
 
 #level-title {
@@ -54,4 +56,12 @@ body {
 
 .hidden {
   visibility: hidden;
+}
+
+.remind {
+  font-family: 'Press Start 2P', cursive;
+  margin: 5px;
+  padding: 3px;
+  display: inline-block;
+  color: #FDF2DE;
 }
