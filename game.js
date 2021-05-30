@@ -5,7 +5,7 @@ var level = 0;
 var started = false;
 
 // Starting the game
-$(document).keypress(function() {
+$("h1").click(function() {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
@@ -18,7 +18,6 @@ $(document).keypress(function() {
 function nextSequence() {
   level++;
   $("#level-title").text("Level " + level);
-
   var randomNumber = Math.floor(Math.random()*4);
   var randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
@@ -40,7 +39,7 @@ function checkAnswer(currentLevel) {
     };
   } else {
 //     // If answer is wrong
-    $("#level-title").text("Game Over at Level "+ level +", Press Any Key To Restart");
+    $("#level-title").text("Game Over at Level "+ level +", Press Here To Restart");
     playSound("wrong");
     $("body").addClass("game-over");
     setTimeout(function(){
