@@ -10,7 +10,7 @@ $("h1").click(function() {
     $("#level-title").text("Level " + level);
     setTimeout(function(){
       nextSequence();
-    },1000);
+    },800);
     started = true;
   };
 });
@@ -83,3 +83,12 @@ function startOver() {
   userClickedPattern = [];
   level = 0;
 };
+
+// If user misses which colour is next
+$("#remind").click( function() {
+  console.log(userClickedPattern.length)
+  if (userClickedPattern.length === 0) {
+    $("#"+gamePattern[level-1]).fadeIn(100).fadeOut(100).fadeIn(100);
+    playSound(gamePattern[level-1]);
+  };
+});
