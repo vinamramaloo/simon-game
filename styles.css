@@ -65,3 +65,11 @@ body {
   display: inline-block;
   color: #FDF2DE;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
